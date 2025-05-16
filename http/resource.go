@@ -331,8 +331,7 @@ func patchAction(ctx context.Context, action, src, dst string, d *data, fileCach
 	case "copyExif":
 		src = d.user.FullPath(src)
 		dst = d.user.FullPath(dst)
-		img.CopyExif(src, dst)
-		return nil
+		return img.CopyExif(src, dst)
 	default:
 		return fmt.Errorf("unsupported action %s: %w", action, fbErrors.ErrInvalidRequestParams)
 	}
