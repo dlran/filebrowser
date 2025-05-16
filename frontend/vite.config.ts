@@ -36,7 +36,7 @@ export default defineConfig(({ command }) => {
             target: "ws://127.0.0.1:8080",
             ws: true,
           },
-          "/api": "http://127.0.0.1:8080",
+          "/api": "http://10.68.2.1:8898",
         },
       },
     };

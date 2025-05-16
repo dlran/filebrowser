@@ -79,7 +79,7 @@
       rgba(0, 0, 0, 0.12) 0px 1px 2px;
     width: 95%;
     max-width: 20em;
-    z-index: 1;
+    z-index: 2;
   }
   #file-selection .action {
     border-radius: 50%;

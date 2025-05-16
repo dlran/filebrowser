@@ -268,7 +268,7 @@ html[dir="rtl"] #listing {
   position: fixed;
   bottom: -4em;
   left: 0;
-  z-index: 99999;
+  z-index: 1;
   width: 100%;
   background-color: var(--blue);
   height: 4em;

@@ -13,6 +13,12 @@
       <template #actions>
         <template v-if="!isMobile">
           <action
+            v-if="headerButtons.copyExif"
+            icon="monochrome_photos"
+            label="Copy Exif"
+            show="copyExif"
+          />
+          <action
             v-if="headerButtons.share"
             icon="share"
             :label="t('buttons.share')"
@@ -85,6 +91,12 @@
       <span v-if="fileStore.selectedCount > 0">
         {{ t("prompts.filesSelected", fileStore.selectedCount) }}
       </span>
+      <action
+        v-if="headerButtons.copyExif"
+        icon="monochrome_photos"
+        label="Copy Exif"
+        show="copyExif"
+      />
       <action
         v-if="headerButtons.share"
         icon="share"
@@ -412,6 +424,7 @@ const headerButtons = computed(() => {
     share: fileStore.selectedCount === 1 && authStore.user?.perm.share,
     move: fileStore.selectedCount > 0 && authStore.user?.perm.rename,
     copy: fileStore.selectedCount > 0 && authStore.user?.perm.create,
+    copyExif: fileStore.selectedCount === 2 && authStore.user?.perm.create,
   };
 });
 

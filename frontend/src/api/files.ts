@@ -180,6 +180,13 @@ export function copy(items: any[], overwrite = false, rename = false) {
   return moveCopy(items, true, overwrite, rename);
 }
 
+export function copyExif(item: {[key: string]: string}) {
+  const from = item.from;
+  const to = encodeURIComponent(removePrefix(item.to ?? ""));
+  const url = `${from}?action=copyExif&destination=${to}&override=true&rename=false`;
+  return resourceAction(url, "PATCH");
+}
+
 export async function checksum(url: string, algo: ChecksumAlg) {
   const data = await resourceAction(`${url}?checksum=${algo}`, "GET");
   return (await data.json()).checksums[algo];
