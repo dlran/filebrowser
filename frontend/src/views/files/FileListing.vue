@@ -13,22 +13,10 @@
       <template #actions>
         <template v-if="!isMobile">
           <action
-            v-if="headerButtons.extractFrame"
-            icon="filter_frames"
-            label="Extract Frame"
-            show="extractFrame"
-          />
-          <action
             v-if="headerButtons.copyExif"
             icon="monochrome_photos"
             label="Copy Exif"
             show="copyExif"
-          />
-          <action
-            v-if="headerButtons.share"
-            icon="share"
-            :label="t('buttons.share')"
-            show="share"
           />
           <action
             v-if="headerButtons.rename"
@@ -59,6 +47,18 @@
           />
         </template>
 
+        <action
+          v-if="headerButtons.extractFrame"
+          icon="filter_frames"
+          label="Extract Frame"
+          show="extractFrame"
+        />
+        <action
+          v-if="headerButtons.share"
+          icon="share"
+          :label="t('buttons.share')"
+          show="share"
+        />
         <action
           v-if="headerButtons.shell"
           icon="code"
@@ -98,22 +98,10 @@
         {{ t("prompts.filesSelected", fileStore.selectedCount) }}
       </span>
       <action
-        v-if="headerButtons.extractFrame"
-        icon="filter_frames"
-        label="Extract Frame"
-        show="extractFrame"
-      />
-      <action
         v-if="headerButtons.copyExif"
         icon="monochrome_photos"
         label="Copy Exif"
         show="copyExif"
-      />
-      <action
-        v-if="headerButtons.share"
-        icon="share"
-        :label="t('buttons.share')"
-        show="share"
       />
       <action
         v-if="headerButtons.rename"
