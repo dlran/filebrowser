@@ -17,7 +17,6 @@ import Download from "./Download.vue";
 import Rename from "./Rename.vue";
 import Move from "./Move.vue";
 import Copy from "./Copy.vue";
-import CopyExif from "./CopyExif.vue";
 import NewFile from "./NewFile.vue";
 import NewDir from "./NewDir.vue";
 import Replace from "./Replace.vue";
@@ -26,6 +25,8 @@ import Share from "./Share.vue";
 import ShareDelete from "./ShareDelete.vue";
 import Upload from "./Upload.vue";
 import DiscardEditorChanges from "./DiscardEditorChanges.vue";
+import CopyExif from "./CopyExif.vue";
+import ExtractFrame from "./ExtractFrame.vue";
 
 const layoutStore = useLayoutStore();
 
@@ -38,7 +39,6 @@ const components = new Map<string, any>([
   ["rename", Rename],
   ["move", Move],
   ["copy", Copy],
-  ["copyExif", CopyExif],
   ["newFile", NewFile],
   ["newDir", NewDir],
   ["download", Download],
@@ -49,6 +49,8 @@ const components = new Map<string, any>([
   ["share-delete", ShareDelete],
   ["deleteUser", DeleteUser],
   ["discardEditorChanges", DiscardEditorChanges],
+  ["copyExif", CopyExif],
+  ["extractFrame", ExtractFrame],
 ]);
 
 watch(currentPromptName, (newValue) => {

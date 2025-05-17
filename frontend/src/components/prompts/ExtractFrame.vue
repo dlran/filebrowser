@@ -1,10 +1,20 @@
 <template>
   <div class="card floating">
+    <div class="card-title">
+      <h2>Extract Video Frame</h2>
+    </div>
     <div class="card-content">
       <p>
-        Copy Exif
-        {{ selectedCount }}
+        Extract Video Frame
+        <code>{{ name }}</code>
       </p>
+      <input
+        id="focus-prompt"
+        class="input input--block"
+        type="text"
+        @keyup.enter="submit"
+        v-model.number="fps"
+      />
     </div>
     <div class="card-action">
       <button
@@ -50,43 +60,33 @@ export default {
     ]),
     ...mapWritableState(useFileStore, ["reload"]),
   },
+  data: function () {
+    return {
+      name: "",
+      fps: 1,
+    };
+  },
+  created() {
+    this.name = this.req.items[this.selected[0]].name;
+  },
   methods: {
     ...mapActions(useLayoutStore, ["closeHovers"]),
     submit: async function () {
-      buttons.loading("copyExif");
-
       window.sessionStorage.setItem("modified", "true");
       try {
-        // if (!this.isListing) {
-        //   buttons.success("copyExif");
-
-        //   this.currentPrompt?.confirm();
-        //   this.closeHovers();
-        //   return;
-        // }
-
-        this.closeHovers();
-
-        if (this.selectedCount !== 2) {
+        if (this.selectedCount !== 1) {
           return;
         }
 
-        const selectedItem = [];
-        for (const index of this.selected) {
-          selectedItem.push(this.req.items[index]);
-        }
-
-        await api.copyExif({
-          from: selectedItem[0].url,
-          to: selectedItem[1].url,
+        await api.extractFrame({
+          from: this.req.items[this.selected[0]].url,
+          fps: this.fps,
         });
-        buttons.success("copyExif");
         this.reload = true;
       } catch (e) {
-        buttons.done("copyExif");
         this.$showError(e);
-        if (this.isListing) this.reload = true;
       }
+      this.closeHovers();
     },
   },
 };

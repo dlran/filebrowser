@@ -13,6 +13,12 @@
       <template #actions>
         <template v-if="!isMobile">
           <action
+            v-if="headerButtons.extractFrame"
+            icon="filter_frames"
+            label="Extract Frame"
+            show="extractFrame"
+          />
+          <action
             v-if="headerButtons.copyExif"
             icon="monochrome_photos"
             label="Copy Exif"
@@ -91,6 +97,12 @@
       <span v-if="fileStore.selectedCount > 0">
         {{ t("prompts.filesSelected", fileStore.selectedCount) }}
       </span>
+      <action
+        v-if="headerButtons.extractFrame"
+        icon="filter_frames"
+        label="Extract Frame"
+        show="extractFrame"
+      />
       <action
         v-if="headerButtons.copyExif"
         icon="monochrome_photos"
@@ -425,6 +437,7 @@ const headerButtons = computed(() => {
     move: fileStore.selectedCount > 0 && authStore.user?.perm.rename,
     copy: fileStore.selectedCount > 0 && authStore.user?.perm.create,
     copyExif: fileStore.selectedCount === 2 && authStore.user?.perm.create,
+    extractFrame: fileStore.selectedCount === 1 && authStore.user?.perm.create,
   };
 });
 
