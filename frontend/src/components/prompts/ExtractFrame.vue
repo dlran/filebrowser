@@ -4,10 +4,7 @@
       <h2>Extract Video Frame</h2>
     </div>
     <div class="card-content">
-      <p>
-        Extract Video Frame
-        <code>{{ name }}</code>
-      </p>
+      <p>FPS</p>
       <input
         id="focus-prompt"
         class="input input--block"
@@ -62,12 +59,8 @@ export default {
   },
   data: function () {
     return {
-      name: "",
       fps: 1,
     };
-  },
-  created() {
-    this.name = this.req.items[this.selected[0]].name;
   },
   methods: {
     ...mapActions(useLayoutStore, ["closeHovers"]),
