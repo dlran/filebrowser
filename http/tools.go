@@ -25,4 +25,4 @@ var toolsPatchHandler = withUser(func(w http.ResponseWriter, r *http.Request, d 
 		err = fmt.Errorf("unsupported action %s: %w", action, fbErrors.ErrInvalidRequestParams)
 	}
 	return errToStatus(err), err
-}
+})

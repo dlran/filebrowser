@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 func CopyExif(srcPath, dstPath string) error {
@@ -34,8 +35,7 @@ func ExtractFrame(srcPath, fps string) error {
 
 	newDirPath := filepath.Join(dir, fileName)
 
-	err := os.MkdirAll(newDirPath, 0755)
-	if err != nil {
+	if err := os.MkdirAll(newDirPath, 0755); err != nil {
 		return fmt.Errorf("Mkdir failed: %v", err)
 	}
 
@@ -55,8 +55,7 @@ func ExtractFrame(srcPath, fps string) error {
 	cmd.Stdout = &outBuf
 	cmd.Stderr = &outBuf
 
-	err := cmd.Run()
-	if err != nil {
+	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("ffmpeg failed: %v\n: %s", err, outBuf.String())
 	}
 
