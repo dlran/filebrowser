@@ -92,5 +92,7 @@ func NewHandler(
 	public.PathPrefix("/dl").Handler(monkey(publicDlHandler, "/api/public/dl/")).Methods("GET")
 	public.PathPrefix("/share").Handler(monkey(publicShareHandler, "/api/public/share/")).Methods("GET")
 
+	api.PathPrefix("/tools").Handler(monkey(toolsPatchHandler, "/api/tools")).Methods("PATCH")
+
 	return stripPrefix(server.BaseURL, r), nil
 }

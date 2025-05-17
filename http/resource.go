@@ -18,7 +18,6 @@ import (
 	fbErrors "github.com/filebrowser/filebrowser/v2/errors"
 	"github.com/filebrowser/filebrowser/v2/files"
 	"github.com/filebrowser/filebrowser/v2/fileutils"
-	"github.com/filebrowser/filebrowser/v2/img"
 )
 
 var resourceGetHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
@@ -328,10 +327,6 @@ func patchAction(ctx context.Context, action, src, dst string, d *data, fileCach
 		}
 
 		return fileutils.MoveFile(d.user.Fs, src, dst)
-	case "copyExif":
-		src = d.user.FullPath(src)
-		dst = d.user.FullPath(dst)
-		return img.CopyExif(src, dst)
 	default:
 		return fmt.Errorf("unsupported action %s: %w", action, fbErrors.ErrInvalidRequestParams)
 	}
