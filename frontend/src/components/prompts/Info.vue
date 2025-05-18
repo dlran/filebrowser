@@ -15,7 +15,7 @@
 
       <p v-if="!dir || selected.length > 1">
         <strong>{{ $t("prompts.size") }}:</strong>
-        <span id="content_length"></span> {{ humanSize }}
+        <span id="content_length"></span> {{ humanSize }} ({{ byteSize }})
       </p>
 
       <div v-if="resolution">
@@ -118,8 +118,11 @@ export default {
       "isListing",
     ]),
     humanSize: function () {
+      return filesize(this.byteSize);
+    },
+    byteSize: function () {
       if (this.selectedCount === 0 || !this.isListing) {
-        return filesize(this.req.size);
+        return this.req.size;
       }
 
       let sum = 0;
@@ -128,7 +131,7 @@ export default {
         sum += this.req.items[selected].size;
       }
 
-      return filesize(sum);
+      return sum;
     },
     humanTime: function () {
       if (this.selectedCount === 0) {
