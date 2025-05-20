@@ -11,18 +11,34 @@ import (
 )
 
 func CopyExif(srcPath, dstPath string) error {
-	cmd := exec.Command("exiftool", "-overwrite_original", "-TagsFromFile", srcPath, "-all:all", "-ThumbnailImage=", dstPath)
+    commands := fmt.Sprintf("exiftool -overwrite_original -TagsFromFile %s -all:all -ThumbnailImage= %s && exiftool -overwrite_original -ContentIdentifier= %s", srcPath, dstPath, dstPath)
+	commandList := strings.Split(commands, "&&")
 
-	var outBuf bytes.Buffer
-	cmd.Stdout = &outBuf
-	cmd.Stderr = &outBuf
+    for _, cmdStr := range commandList {
+        cmdStr = strings.TrimSpace(cmdStr)
+		if cmdStr == "" {
+			continue
+		}
+        parts := strings.Fields(cmdStr)
+		if len(parts) == 0 {
+			continue
+		}
 
-	err := cmd.Run()
-	if err != nil {
-		return fmt.Errorf("exiftool failed: %v\n: %s", err, outBuf.String())
-	}
+        name := parts[0]
+        args := parts[1:]
+        cmd := exec.Command(name, args...)
 
-	log.Println("copy exif successful:", outBuf.String())
+        var outBuf bytes.Buffer
+        cmd.Stdout = &outBuf
+        cmd.Stderr = &outBuf
+
+        err := cmd.Run()
+        if err != nil {
+            return fmt.Errorf("error executing: %v\n: %s", err, outBuf.String())
+        }
+
+        log.Println("executed successful:", outBuf.String())
+    }
 
 	return nil
 }
