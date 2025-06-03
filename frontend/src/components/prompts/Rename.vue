@@ -96,8 +96,20 @@ export default {
       });
       const uc = res.UserComment.split('_');
       const extension = this.name.split('.').pop();
-      const name = `${uc[3]}_${uc[0]}_${uc[1]}.${extension}`;
+      const randStr = this.generateRandomString(4)
+      const name = `${uc[3]}_${uc[0]}_${uc[1]}_${randStr}.${extension}`;
       this.name = name;
+    },
+    generateRandomString(length) {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      const charactersLength = characters.length;
+
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
+      return result;
     },
     submit: async function () {
       let oldLink = "";
