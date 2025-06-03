@@ -2,10 +2,10 @@ package http
 
 import (
 	"fmt"
-	"net/url"
-	"net/http"
 	fbErrors "github.com/filebrowser/filebrowser/v2/errors"
 	"github.com/filebrowser/filebrowser/v2/img"
+	"net/http"
+	"net/url"
 )
 
 var toolsPatchHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
@@ -21,6 +21,12 @@ var toolsPatchHandler = withUser(func(w http.ResponseWriter, r *http.Request, d 
 		err = img.CopyExif(src, dst)
 	case "extractFrame":
 		err = img.ExtractFrame(src, fps)
+	case "extractExif":
+		var exifData img.Exif
+		err = img.ExtractExif(src, &exifData)
+		if err == nil {
+			return renderJSON(w, r, exifData)
+		}
 	default:
 		err = fmt.Errorf("unsupported action %s: %w", action, fbErrors.ErrInvalidRequestParams)
 	}
