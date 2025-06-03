@@ -21,6 +21,12 @@
     <div class="card-action">
       <button
         class="button button--flat button--grey"
+        @click="generateExifName()"
+      >
+        exif
+      </button>
+      <button
+        class="button button--flat button--grey"
         @click="closeHovers"
         :aria-label="$t('buttons.cancel')"
         :title="$t('buttons.cancel')"
@@ -45,7 +51,7 @@ import { mapActions, mapState, mapWritableState } from "pinia";
 import { useFileStore } from "@/stores/file";
 import { useLayoutStore } from "@/stores/layout";
 import url from "@/utils/url";
-import { files as api } from "@/api";
+import { files as api, tools as tools } from "@/api";
 
 export default {
   name: "rename",
@@ -83,6 +89,15 @@ export default {
       }
 
       return this.req.items[this.selected[0]].name;
+    },
+    async generateExifName() {
+      const res = await tools.extractExif({
+        from: this.req.items[this.selected[0]].url,
+      });
+      const uc = res.UserComment.split('_');
+      const extension = this.name.split('.').pop();
+      const name = `${uc[3]}_${uc[0]}_${uc[1]}.${extension}`;
+      this.name = name;
     },
     submit: async function () {
       let oldLink = "";
