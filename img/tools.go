@@ -9,42 +9,65 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
+type FlexibleString string
+
+func (fs *FlexibleString) UnmarshalJSON(data []byte) error {
+	var v interface{}
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+
+	switch value := v.(type) {
+	case int:
+		*fs = FlexibleString(strconv.Itoa(value))
+	case float64:
+		*fs = FlexibleString(strconv.FormatFloat(value, 'f', -1, 64))
+	case string:
+		*fs = FlexibleString(value)
+	default:
+		return fmt.Errorf("invalid type for FlexibleString: %T", value)
+	}
+
+	return nil
+}
+
 type Exif struct {
-	FileType             string  `json:"FileType"`
-	FileTypeExtension    string  `json:"FileTypeExtension"`
-	MIMEType             string  `json:"MIMEType"`
-	Make                 string  `json:"Make"`
-	Model                string  `json:"Model"`
-	Orientation          string  `json:"Orientation"`
-	Rotate               string  `json:"Rotate"`
-	Software             string  `json:"Software"`
-	ExposureTime         string  `json:"ExposureTime"`
-	FNumber              float64 `json:"FNumber"`
-	ExposureProgram      string  `json:"ExposureProgram"`
-	ISO                  int     `json:"ISO"`
-	ExposureCompensation string  `json:"ExposureCompensation"`
-	MeteringMode         string  `json:"MeteringMode"`
-	Flash                string  `json:"Flash"`
-	FocalLength          string  `json:"FocalLength"`
-	ExposureMode         string  `json:"ExposureMode"`
-	WhiteBalance         string  `json:"WhiteBalance"`
-	LensModel            string  `json:"LensModel"`
-	ImageWidth           int     `json:"ImageWidth"`
-	ImageHeight          int     `json:"ImageHeight"`
-	GPSAltitude          string  `json:"GPSAltitude"`
-	GPSLatitude          string  `json:"GPSLatitude"`
-	GPSLongitude         string  `json:"GPSLongitude"`
-	UserComment          string  `json:"UserComment"`
-	Duration             string  `json:"Duration"`
-	ContentIdentifier    string  `json:"ContentIdentifier"`
-	DateTimeOriginal     string  `json:"DateTimeOriginal"`
-	CreationDate         string  `json:"CreationDate"`
-	CreateDate           string  `json:"CreateDate"`
-	ModifyDate           string  `json:"ModifyDate"`
-	FileModifyDate       string  `json:"FileModifyDate"`
+	FileType             string         `json:"FileType"`
+	FileTypeExtension    string         `json:"FileTypeExtension"`
+	MIMEType             string         `json:"MIMEType"`
+	Make                 string         `json:"Make"`
+	Model                FlexibleString `json:"Model"`
+	Orientation          string         `json:"Orientation"`
+	Rotate               string         `json:"Rotate"`
+	Software             FlexibleString `json:"Software"`
+	ExposureTime         FlexibleString `json:"ExposureTime"`
+	FNumber              float64        `json:"FNumber"`
+	ExposureProgram      string         `json:"ExposureProgram"`
+	ISO                  int            `json:"ISO"`
+	ExposureCompensation FlexibleString `json:"ExposureCompensation"`
+	MeteringMode         string         `json:"MeteringMode"`
+	Flash                string         `json:"Flash"`
+	FocalLength          string         `json:"FocalLength"`
+	ExposureMode         string         `json:"ExposureMode"`
+	WhiteBalance         string         `json:"WhiteBalance"`
+	LensModel            string         `json:"LensModel"`
+	ImageWidth           int            `json:"ImageWidth"`
+	ImageHeight          int            `json:"ImageHeight"`
+	GPSAltitude          string         `json:"GPSAltitude"`
+	GPSLatitude          string         `json:"GPSLatitude"`
+	GPSLongitude         string         `json:"GPSLongitude"`
+	UserComment          string         `json:"UserComment"`
+	Duration             string         `json:"Duration"`
+	ContentIdentifier    string         `json:"ContentIdentifier"`
+	DateTimeOriginal     string         `json:"DateTimeOriginal"`
+	CreationDate         string         `json:"CreationDate"`
+	CreateDate           string         `json:"CreateDate"`
+	ModifyDate           string         `json:"ModifyDate"`
+	FileModifyDate       string         `json:"FileModifyDate"`
 }
 
 func CopyExif(srcPath, dstPath string) error {
