@@ -91,14 +91,18 @@ export default {
       return this.req.items[this.selected[0]].name;
     },
     async generateExifName() {
-      const res = await tools.extractExif({
-        from: this.req.items[this.selected[0]].url,
-      });
-      const uc = res.UserComment.split('_');
-      const extension = this.name.split('.').pop();
-      const randStr = this.generateRandomString(4)
-      const name = `${uc[3]}_${uc[0]}_${uc[1]}_${randStr}.${extension}`;
-      this.name = name;
+      try {
+        const res = await tools.extractExif({
+          from: this.req.items[this.selected[0]].url,
+        });
+        const uc = res.UserComment.split('_');
+        const extension = this.name.split('.').pop();
+        const randStr = this.generateRandomString(4)
+        const name = `${uc[3]}_${uc[0]}_${uc[1]}_${randStr}.${extension}`;
+        this.name = name;
+      } catch (e) {
+        this.$showError(e);
+      }
     },
     generateRandomString(length) {
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
