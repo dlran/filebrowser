@@ -74,7 +74,7 @@ func CopyExif(srcPath, dstPath string) error {
 	re := regexp.MustCompile(`(?i)\.(mp4|mov)$`)
 	var commands string
 	if re.MatchString(dstPath) {
-		commands = fmt.Sprintf("exiftool -overwrite_original -TagsFromFile %s -DateTimeOriginal -GPS* %s", srcPath, dstPath)
+		commands = fmt.Sprintf("exiftool -overwrite_original -TagsFromFile %s -DateTimeOriginal -CreateDate -CreationDate -GPS* %s", srcPath, dstPath)
 	} else {
 		commands = fmt.Sprintf("exiftool -overwrite_original -TagsFromFile %s -all:all -ThumbnailImage= %s && exiftool -overwrite_original -ContentIdentifier= %s", srcPath, dstPath, dstPath)
 	}
