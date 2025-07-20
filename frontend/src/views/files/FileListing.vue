@@ -174,7 +174,6 @@
       >
         <div>
           <div class="item header">
-            <div></div>
             <div>
               <p
                 :class="{ active: nameSorted }"
@@ -525,8 +524,11 @@ const keyEvent = (event: KeyboardEvent) => {
 
   switch (event.key) {
     case "f":
-      event.preventDefault();
-      layoutStore.showHover("search");
+    case "F":
+      if (event.shiftKey) {
+        event.preventDefault();
+        layoutStore.showHover("search");
+      }
       break;
     case "c":
     case "x":
