@@ -42,7 +42,12 @@
     "update": "Cập nhật",
     "upload": "Tải lên",
     "openFile": "Mở tệp",
-    "discardChanges": "Hủy bỏ thay đổi"
+    "discardChanges": "Hủy bỏ thay đổi",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Tải xuống tệp tin",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Sắp xếp theo ngày sửa đổi",
     "sortByName": "Sắp xếp theo tên",
     "sortBySize": "Sắp xếp theo kích thước",
-    "noPreview": "Không có bản xem trước cho tập tin này."
+    "noPreview": "Không có bản xem trước cho tập tin này.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "chọn tập tin hoặc thư mục",
@@ -100,7 +114,11 @@
     "submit": "Đăng nhập",
     "username": "Tên người dùng",
     "usernameTaken": "Tên người dùng đã tồn tại",
-    "wrongCredentials": "Thông tin đăng nhập không đúng"
+    "wrongCredentials": "Thông tin đăng nhập không đúng",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Vĩnh viễn",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Video"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Quản trị viên",
     "administrator": "Người quản trị",
     "allowCommands": "Thực thi lệnh",
@@ -161,6 +180,7 @@
     "allowNew": "Tạo tệp và thư mục mới",
     "allowPublish": "Xuất bản bài viết và trang mới",
     "allowSignup": "Cho phép người dùng đăng ký",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(để trống để tránh thay đổi)",
     "branding": "Thương hiệu",
     "brandingDirectoryPath": "Đường dẫn thư mục thương hiệu",
@@ -170,7 +190,7 @@
     "commandRunnerHelp": "Tại đây, bạn có thể thiết lập các lệnh được thực thi trong các sự kiện đã định. Bạn phải viết một lệnh trên mỗi dòng. Các biến môi trường {0} và {1} sẽ có sẵn, trong đó {0} tương đối với {1}. Để biết thêm thông tin về tính năng này và các biến môi trường có sẵn, vui lòng đọc {2}.",
     "commandsUpdated": "Lệnh đã được cập nhật!",
     "createUserDir": "Tự động tạo thư mục chính của người dùng khi thêm người dùng mới",
-    "minimumPasswordLength": "Minimum password length",
+    "minimumPasswordLength": "Độ dài mật khẩu tối thiểu",
     "tusUploads": "Tải lên theo phân đoạn",
     "tusUploadsHelp": "File Browser hỗ trợ tải lên tệp theo phân đoạn, giúp việc tải lên trở nên hiệu quả, đáng tin cậy, có thể tiếp tục và phù hợp với mạng không ổn định.",
     "tusUploadsChunkSize": "Kích thước tối đa của một yêu cầu (tải lên trực tiếp sẽ được sử dụng cho các tệp nhỏ hơn). Bạn có thể nhập một số nguyên biểu thị kích thước theo byte hoặc một chuỗi như 10MB, 1GB, v.v.",
@@ -212,6 +232,7 @@
     "permissions": "Quyền",
     "permissionsHelp": "Bạn có thể đặt người dùng làm quản trị viên hoặc chọn quyền riêng lẻ. Nếu chọn \"Người quản trị\", tất cả các tùy chọn khác sẽ tự động được chọn. Việc quản lý người dùng vẫn là đặc quyền của quản trị viên.\n",
     "profileSettings": "Cài đặt hồ sơ",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "ngăn truy cập vào bất kỳ tệp ẩn nào (chẳng hạn như .git, .gitignore) trong mọi thư mục.\n",
     "ruleExample2": "chặn truy cập vào tệp có tên Caddyfile trong thư mục gốc của phạm vi.",
     "rules": "Quy tắc",
@@ -238,7 +259,8 @@
     "userManagement": "Quản lý người dùng",
     "userUpdated": "Người dùng đã được cập nhật!",
     "username": "Tên người dùng",
-    "users": "Người dùng"
+    "users": "Người dùng",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Trợ giúp",

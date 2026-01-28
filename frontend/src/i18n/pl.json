@@ -42,7 +42,12 @@
     "update": "Aktualizuj",
     "upload": "Wyślij",
     "openFile": "Otwórz plik",
-    "discardChanges": "Odrzuć"
+    "discardChanges": "Odrzuć",
+    "stopSearch": "Zatrzymaj wyszukiwanie",
+    "saveChanges": "Zapisz zmiany",
+    "editAsText": "Edytuj jako tekst",
+    "increaseFontSize": "Zwiększ rozmiar czcionki",
+    "decreaseFontSize": "Zmniejsz rozmiar czcionki"
   },
   "download": {
     "downloadFile": "Pobierz plik",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Sortuj wg ostatniej modyfikacji",
     "sortByName": "Sortuj wg nazwy",
     "sortBySize": "Sortuj wg rozmiaru",
-    "noPreview": "Podgląd tego pliku jest niedostępny."
+    "noPreview": "Podgląd tego pliku jest niedostępny.",
+    "csvTooLarge": "Plik CSV jest za duży do podglądu (>5 MB). Pobierz, aby wyświetlić.",
+    "csvLoadFailed": "Nie udało się załadować pliku CSV.",
+    "showingRows": "Wyświetlanie wierszy: {count}",
+    "columnSeparator": "Separator kolumn",
+    "csvSeparators": {
+      "comma": "Przecinek (,)",
+      "semicolon": "Średnik (;)",
+      "both": "Zarówno (,), jak i (;)"
+    }
   },
   "help": {
     "click": "zaznacz plik lub folder",
@@ -100,7 +114,11 @@
     "submit": "Zaloguj",
     "username": "Nazwa użytkownika",
     "usernameTaken": "Ta nazwa użytkownika jest zajęta",
-    "wrongCredentials": "Błędne dane logowania"
+    "wrongCredentials": "Błędne dane logowania",
+    "passwordTooShort": "Wymagana minimalna liczba znaków hasła: {min}",
+    "logout_reasons": {
+      "inactivity": "Wylogowano z powodu braku aktywności."
+    }
   },
   "permanent": "Permanentny",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Wideo"
   },
   "settings": {
+    "aceEditorTheme": "Motyw edytora Ace",
     "admin": "Admin",
     "administrator": "Administrator",
     "allowCommands": "Wykonaj polecenie",
@@ -161,6 +180,7 @@
     "allowNew": "Tworzenie nowych plików lub folderów",
     "allowPublish": "Tworzenie nowych wpisów i stron",
     "allowSignup": "Pozwól użytkownikom na rejestrację",
+    "hideLoginButton": "Ukryj przycisk logowania na stronach publicznych",
     "avoidChanges": "(pozostaw puste, aby uniknąć zmian)",
     "branding": "Personalizacja",
     "brandingDirectoryPath": "Ścieżka do folderu personalizacji",
@@ -211,7 +231,8 @@
     },
     "permissions": "Uprawnienia",
     "permissionsHelp": "Możesz ustawić użytkownika jako administratora lub wybrać uprawnienia indywidualnie. Jeśli wybierzesz „Administrator”, wszystkie pozostałe opcje zostaną automatycznie zaznaczone. Zarządzanie użytkownikami pozostaje przywilejem administratora.\n",
-    "profileSettings": "Twój profil",
+    "profileSettings": "Ustawienia profilu",
+    "redirectAfterCopyMove": "Przekieruj do miejsca docelowego po skopiowaniu lub przeniesieniu",
     "ruleExample1": "uniemożliwia dostęp do plików poprzedzonych kropką (takich jak .git, .gitignore) we wszystkich folderach.\n",
     "ruleExample2": "blokuje dostęp do pliku o nazwie Caddyfile w katalogu głównym zakresu.",
     "rules": "Uprawnienia",
@@ -238,7 +259,8 @@
     "userManagement": "Zarządzanie użytkownikami",
     "userUpdated": "Użytkownik zapisany!",
     "username": "Nazwa użytkownika",
-    "users": "Użytkownicy"
+    "users": "Użytkownicy",
+    "currentPassword": "Twoje aktualne hasło"
   },
   "sidebar": {
     "help": "Pomoc",

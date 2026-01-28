@@ -20,6 +20,7 @@
     :aria-label="name"
     :aria-selected="isSelected"
     :data-ext="getExtension(name).toLowerCase()"
+    @contextmenu="contextMenu"
   >
     <div>
       <img
@@ -239,6 +240,17 @@ const itemClick = (event: Event | KeyboardEvent) => {
   else click(event);
 };
 
+const contextMenu = (event: MouseEvent) => {
+  event.preventDefault();
+  if (
+    fileStore.selected.length === 0 ||
+    event.ctrlKey ||
+    fileStore.selected.indexOf(props.index) === -1
+  ) {
+    click(event);
+  }
+};
+
 const click = (event: Event | KeyboardEvent) => {
   if (!singleClick.value && fileStore.selectedCount !== 0)
     event.preventDefault();
@@ -253,7 +265,15 @@ const click = (event: Event | KeyboardEvent) => {
   }
 
   if (fileStore.selected.indexOf(props.index) !== -1) {
-    fileStore.removeSelected(props.index);
+    if (
+      (event as KeyboardEvent).ctrlKey ||
+      (event as KeyboardEvent).metaKey ||
+      fileStore.multiple
+    ) {
+      fileStore.removeSelected(props.index);
+    } else {
+      fileStore.selected = [props.index];
+    }
     return;
   }
 
@@ -279,7 +299,6 @@ const click = (event: Event | KeyboardEvent) => {
   }
 
   if (
-    !singleClick.value &&
     !(event as KeyboardEvent).ctrlKey &&
     !(event as KeyboardEvent).metaKey &&
     !fileStore.multiple

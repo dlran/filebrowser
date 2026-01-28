@@ -42,7 +42,12 @@
     "update": "Ενημέρωση",
     "upload": "Μεταφόρτωση",
     "openFile": "Άνοιγμα αρχείου",
-    "discardChanges": "Discard"
+    "discardChanges": "Discard",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Λήψη αρχείου",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Ταξινόμηση κατά πρόσφατη τροποποίηση",
     "sortByName": "Ταξινόμηση κατά όνομα",
     "sortBySize": "Ταξινόμηση κατά μέγεθος",
-    "noPreview": "Η προεπισκόπηση δεν είναι διαθέσιμη για αυτό το αρχείο."
+    "noPreview": "Η προεπισκόπηση δεν είναι διαθέσιμη για αυτό το αρχείο.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "επιλέξτε αρχείο ή φάκελο",
@@ -100,7 +114,11 @@
     "submit": "Είσοδος",
     "username": "Όνομα χρήστη",
     "usernameTaken": "Το όνομα χρήστη χρησιμοποιείται ήδη",
-    "wrongCredentials": "Λάθος όνομα ή/και κωδικός πρόσβασης"
+    "wrongCredentials": "Λάθος όνομα ή/και κωδικός πρόσβασης",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Μόνιμο",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Βίντεο"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Διαχειριστής",
     "administrator": "Διαχειριστής",
     "allowCommands": "Εκτέλεση εντολών",
@@ -161,6 +180,7 @@
     "allowNew": "Δημιουργία νέων αρχείων και φακέλων",
     "allowPublish": "Δημοσίευση νέων αναρτήσεων και σελίδων",
     "allowSignup": "Να επιτρέπεται η εγγραφή νέων χρηστών",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(αφήστε το κενό για αποφυγή αλλαγών)",
     "branding": "Εξατομίκευση",
     "brandingDirectoryPath": "Διαδρομή φακέλου εξατομίκευσης",
@@ -212,6 +232,7 @@
     "permissions": "Δικαιώματα",
     "permissionsHelp": "Μπορείτε να ορίσετε τον χρήστη ως διαχειριστή ή να επιλέξετε τα δικαιώματα μεμονωμένα. Αν επιλέξετε \"Διαχειριστής\", όλες οι υπόλοιπες επιλογές θα είναι αυτόματα επιλεγμένες. Η διαχείριση χρηστών παραμένει προνόμιο ενός χρήστη με τον ρόλο του διαχειριστή.\n",
     "profileSettings": "Ρυθμίσεις προφίλ",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "αποκλείει την πρόσβαση σε οποιοδήποτε κρυφό αρχείο (όπως .git, .gitignore) σε κάθε φάκελο.\n",
     "ruleExample2": "αποκλείει την πρόσβαση στο αρχείο με το όνομα Caddyfile στον ριζικό φάκελο της εμβέλειας του κανόνα.",
     "rules": "Κανόνες",
@@ -238,7 +259,8 @@
     "userManagement": "Διαχείριση χρηστών",
     "userUpdated": "Ο χρήστης ενημερώθηκε!",
     "username": "Όνομα χρήστη",
-    "users": "Χρήστες"
+    "users": "Χρήστες",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Βοήθεια",

@@ -42,7 +42,12 @@
     "update": "Güncelle",
     "upload": "Yükle",
     "openFile": "Dosyayı aç",
-    "discardChanges": "Discard"
+    "discardChanges": "Discard",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Dosyayı indir",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Güncelleme tarihine göre sırala",
     "sortByName": "İsme göre sırala",
     "sortBySize": "Boyuta göre sırala",
-    "noPreview": "Bu dosya için önizleme aktif değil"
+    "noPreview": "Bu dosya için önizleme aktif değil",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "dosya veya klasör seçin",
@@ -100,7 +114,11 @@
     "submit": "Giriş",
     "username": "Kullanıcı adı",
     "usernameTaken": "Kullanıcı adı mevcut",
-    "wrongCredentials": "Yanlış hesap bilgileri"
+    "wrongCredentials": "Yanlış hesap bilgileri",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Kalıcı",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Video"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Yönetim",
     "administrator": "Yönetici",
     "allowCommands": "Komutları çalıştır",
@@ -161,6 +180,7 @@
     "allowNew": "Yeni dosyalar ve dizinler oluşturun",
     "allowPublish": "Yeni linkler ve sayfaları yayınlayın",
     "allowSignup": "Kullanıcıların kaydolmasına izin ver",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(değişiklikleri önlemek için boş bırakın)",
     "branding": "Marka",
     "brandingDirectoryPath": "Marka dizin yolu",
@@ -212,6 +232,7 @@
     "permissions": "İzinler",
     "permissionsHelp": "Kullanıcıyı yönetici olarak ayarlayabilir veya izinleri ayrı ayrı seçebilirsiniz. \"Yönetici\"yi seçerseniz, diğer tüm seçenekler otomatik olarak kontrol edilecektir. Kullanıcıların yönetimi, bir yöneticinin yetkisi olarak kalır.\n",
     "profileSettings": "Profil ayarları",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "her klasördeki herhangi bir noktalı dosyaya (.git, .gitignore gibi) erişimi engeller.\n",
     "ruleExample2": "Root erişimidenki CaddyFile dosyalarına erişimi engelle.",
     "rules": "Kurallar",
@@ -238,7 +259,8 @@
     "userManagement": "Kullanıcı yönetimi",
     "userUpdated": "Kullanıcı güncellendi!",
     "username": "Kullanıcı adı",
-    "users": "Kullanıcılar"
+    "users": "Kullanıcılar",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Yardım",

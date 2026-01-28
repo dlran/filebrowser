@@ -42,7 +42,12 @@
     "update": "更新",
     "upload": "アップロード",
     "openFile": "ファイルを開く",
-    "discardChanges": "Discard"
+    "discardChanges": "Discard",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "ファイルのダウンロード",
@@ -74,7 +79,16 @@
     "sortByLastModified": "更新日時で並べ替え",
     "sortByName": "名前で並べ替え",
     "sortBySize": "サイズで並べ替え",
-    "noPreview": "プレビューはこのファイルでは利用できません"
+    "noPreview": "プレビューはこのファイルでは利用できません",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "ファイルやフォルダーを選択",
@@ -100,7 +114,11 @@
     "submit": "ログイン",
     "username": "ユーザー名",
     "usernameTaken": "ユーザー名はすでに取得されています",
-    "wrongCredentials": "ユーザー名またはパスワードが間違っています"
+    "wrongCredentials": "ユーザー名またはパスワードが間違っています",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "永久",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "動画"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "管理者",
     "administrator": "管理者",
     "allowCommands": "コマンドの実行",
@@ -161,6 +180,7 @@
     "allowNew": "ファイルやフォルダーの新規作成",
     "allowPublish": "新しい投稿やページの公開",
     "allowSignup": "ユーザーの新規登録を許可",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "（変更しない場合は空白のままにしてください）",
     "branding": "ブランディング",
     "brandingDirectoryPath": "ブランディングのディレクトリへのパス",
@@ -212,6 +232,7 @@
     "permissions": "権限",
     "permissionsHelp": "ユーザーを管理者に設定するか、その他の権限を個別に選択することができます。「管理者」を選択すると、他のオプションはすべて自動的にチェックされます。ユーザーを管理するには管理者権限が必要です。\n",
     "profileSettings": "プロフィール設定",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": ".git や .gitignore のようなドットから始まるファイルへのアクセスを禁止します。\n",
     "ruleExample2": "スコープのルートにある Caddyfile という名前のファイルへのアクセスを禁止します。",
     "rules": "ルール",
@@ -238,7 +259,8 @@
     "userManagement": "ユーザー管理",
     "userUpdated": "ユーザーを更新しました！",
     "username": "ユーザー名",
-    "users": "ユーザー"
+    "users": "ユーザー",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "ヘルプ",

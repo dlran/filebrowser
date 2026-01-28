@@ -42,7 +42,12 @@
     "update": "Actualizează",
     "upload": "Încarcă",
     "openFile": "Open file",
-    "discardChanges": "Discard"
+    "discardChanges": "Discard",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Descarcă fișier",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Ordonează dup ultima modificare",
     "sortByName": "Ordonează după nume",
     "sortBySize": "Ordonează după dimensiune",
-    "noPreview": "Preview is not available for this file."
+    "noPreview": "Preview is not available for this file.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "alege fișier sau director",
@@ -100,7 +114,11 @@
     "submit": "Autentificare",
     "username": "Utilizator",
     "usernameTaken": "Utilizatorul există",
-    "wrongCredentials": "Informații greșite"
+    "wrongCredentials": "Informații greșite",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Permanent",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Video"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Admin",
     "administrator": "Administrator",
     "allowCommands": "Execută comenzi",
@@ -161,6 +180,7 @@
     "allowNew": "Crează noi fișiere sau directoare",
     "allowPublish": "Publică noi pagini și postări",
     "allowSignup": "Permite utilizatorilor să se înregistreze",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(lasă gol pentru a nu schimba)",
     "branding": "Branding",
     "brandingDirectoryPath": "Calea către directorul de branding",
@@ -212,6 +232,7 @@
     "permissions": "Permisiuni",
     "permissionsHelp": "Poți alege ca un utilizator să fie administrator sau să-i alegi permisiunile individual. Dacă alegi \"Administrator\", toate celelalte opțiuni vor fi bifate automat. Gestionarea utilizatorilor rămâne un privilegiu exclusiv al administratorilor.\n",
     "profileSettings": "Setări profil",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "împiedică accesul la fisiere cu punct in față (.), cum ar fi .git, .gitignore în orice director.\n",
     "ruleExample2": "împiedică accesul la fișierul Caddyfile din rădăcina domeniului.",
     "rules": "Reguli",
@@ -238,7 +259,8 @@
     "userManagement": "Gestionare utilizatori",
     "userUpdated": "Utilizator actualizat!",
     "username": "Utilizator",
-    "users": "Utilizatori"
+    "users": "Utilizatori",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Ajutor",

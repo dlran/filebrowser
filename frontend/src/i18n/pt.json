@@ -42,7 +42,12 @@
     "update": "Atualizar",
     "upload": "Enviar",
     "openFile": "Open file",
-    "discardChanges": "Discard"
+    "discardChanges": "Discard",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Descarregar ficheiro",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Ordenar pela última alteração",
     "sortByName": "Ordenar pelo nome",
     "sortBySize": "Ordenar pelo tamanho",
-    "noPreview": "Preview is not available for this file."
+    "noPreview": "Preview is not available for this file.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "selecionar pasta ou ficheiro",
@@ -100,7 +114,11 @@
     "submit": "Entrar na conta",
     "username": "Nome de utilizador",
     "usernameTaken": "O nome de utilizador já está registado",
-    "wrongCredentials": "Dados errados"
+    "wrongCredentials": "Dados errados",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Permanente",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Vídeos"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Admin",
     "administrator": "Administrador",
     "allowCommands": "Executar comandos",
@@ -161,6 +180,7 @@
     "allowNew": "Criar novos ficheiros e pastas",
     "allowPublish": "Publicar novas páginas e conteúdos",
     "allowSignup": "Permitir que os utilizadores criem contas",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(deixe em branco para manter)",
     "branding": "Marca",
     "brandingDirectoryPath": "Caminho da pasta de marca",
@@ -212,6 +232,7 @@
     "permissions": "Permissões",
     "permissionsHelp": "Pode definir o utilizador como administrador ou escolher as permissões manualmente. Se selecionar a opção \"Administrador\", todas as outras opções serão automaticamente selecionadas. A gestão dos utilizadores é um privilégio restringido aos administradores.\n",
     "profileSettings": "Configurações do utilizador",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "previne o acesso a qualquer \"dotfile\" (como .git, .gitignore) em qualquer pasta\n",
     "ruleExample2": "bloqueia o acesso ao ficheiro chamado Caddyfile na raiz.",
     "rules": "Regras",
@@ -238,7 +259,8 @@
     "userManagement": "Gestão de utilizadores",
     "userUpdated": "Utilizador atualizado!",
     "username": "Nome de utilizador",
-    "users": "Utilizadores"
+    "users": "Utilizadores",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Ajuda",

@@ -42,7 +42,12 @@
     "update": "עדכון",
     "upload": "העלאה",
     "openFile": "פתח קובץ",
-    "discardChanges": "זריקת השינויים"
+    "discardChanges": "זריקת השינויים",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "הורד קובץ",
@@ -74,7 +79,16 @@
     "sortByLastModified": "מיין לפי השינוי האחרון",
     "sortByName": "מיין לפי שם",
     "sortBySize": "מיין לפי גודל",
-    "noPreview": "לא זמינה תצוגה מקדימה לקובץ זה"
+    "noPreview": "לא זמינה תצוגה מקדימה לקובץ זה",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "בחר קובץ או תיקייה",
@@ -100,7 +114,11 @@
     "submit": "התחברות",
     "username": "שם משתמש",
     "usernameTaken": "שם המשתמש כבר קיים",
-    "wrongCredentials": "פרטי התחברות שגויים"
+    "wrongCredentials": "פרטי התחברות שגויים",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "קבוע",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "וידאו"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "מנהל",
     "administrator": "מנהל ראשי",
     "allowCommands": "הפעלת פקודות",
@@ -161,6 +180,7 @@
     "allowNew": "יצירת קבצים ותיקיות חדשות",
     "allowPublish": "פרסום פוסטים ודפים חדשים",
     "allowSignup": "אפשר למשתמשים חדשים להירשם",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(השאר ריק כדי למנוע שינויים)",
     "branding": "מיתוג",
     "brandingDirectoryPath": "נתיב תיקיית מיתוג",
@@ -212,6 +232,7 @@
     "permissions": "הרשאות",
     "permissionsHelp": "אתה יכול להגדיר את המשתמש להיות מנהל מערכת או לבחור את ההרשאות בנפרד. אם תבחר \"מנהל מערכת\", כל ההרשאות יינתנו אוטומטית. ניהול המשתמשים נשאר הרשאה של מנהל מערכת.\n",
     "profileSettings": "הגדרות פרופיל",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "מנע גישה לקבצים נסתרים (כל קובץ/תיקייה שמתחיל בנקודה, לדוגמא .git)",
     "ruleExample2": "חסימת גישה לקובץ בשם Caddyfile בהיקף הראשי.",
     "rules": "חוקים",
@@ -238,7 +259,8 @@
     "userManagement": "ניהול משתמש",
     "userUpdated": "המשתמש עודכן!",
     "username": "שם משתמש",
-    "users": "משתמשים"
+    "users": "משתמשים",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "עזרה",

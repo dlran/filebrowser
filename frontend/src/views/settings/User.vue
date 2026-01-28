@@ -15,6 +15,19 @@
             :isDefault="false"
             :isNew="isNew"
           />
+
+          <p v-if="isCurrentPasswordRequired">
+            <label for="currentPassword">{{
+              t("settings.currentPassword")
+            }}</label>
+            <input
+              class="input input--block"
+              type="password"
+              v-model="currentPassword"
+              id="currentPassword"
+              autocomplete="current-password"
+            />
+          </p>
         </div>
 
         <div class="card-action">
@@ -58,11 +71,14 @@ import { computed, inject, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { StatusError } from "@/api/utils";
+import { authMethod } from "@/utils/constants";
 
 const error = ref<StatusError>();
 const originalUser = ref<IUser>();
 const user = ref<IUser>();
 const createUserDir = ref<boolean>(false);
+const currentPassword = ref<string>("");
+const isCurrentPasswordRequired = ref<boolean>(false);
 
 const $showError = inject<IToastError>("$showError")!;
 const $showSuccess = inject<IToastSuccess>("$showSuccess")!;
@@ -91,6 +107,7 @@ const fetchData = async () => {
   try {
     if (isNew.value) {
       const { defaults, createUserDir: _createUserDir } = await settings.get();
+      isCurrentPasswordRequired.value = authMethod == "json";
       createUserDir.value = _createUserDir;
       user.value = {
         ...defaults,
@@ -101,6 +118,8 @@ const fetchData = async () => {
         id: 0,
       };
     } else {
+      const { authMethod } = await settings.get();
+      isCurrentPasswordRequired.value = authMethod == "json";
       const id = Array.isArray(route.params.id)
         ? route.params.id.join("")
         : route.params.id;
@@ -124,7 +143,7 @@ const deleteUser = async (e: Event) => {
     return false;
   }
   try {
-    await api.remove(user.value.id);
+    await api.remove(user.value.id, currentPassword.value);
     router.push({ path: "/settings/users" });
     $showSuccess(t("settings.userDeleted"));
   } catch (err) {
@@ -151,11 +170,11 @@ const save = async (event: Event) => {
         ...user.value,
       };
 
-      const loc = await api.create(newUser);
+      const loc = await api.create(newUser, currentPassword.value);
       router.push({ path: loc || "/settings/users" });
       $showSuccess(t("settings.userCreated"));
     } else {
-      await api.update(user.value);
+      await api.update(user.value, ["all"], currentPassword.value);
 
       if (user.value.id === authStore.user?.id) {
         authStore.updateUser(user.value);

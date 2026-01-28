@@ -1,4 +1,4 @@
-package http
+package fbhttp
 
 import (
 	"encoding/json"
@@ -12,7 +12,8 @@ import (
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 
-	fbErrors "github.com/filebrowser/filebrowser/v2/errors"
+	"github.com/filebrowser/filebrowser/v2/auth"
+	fberrors "github.com/filebrowser/filebrowser/v2/errors"
 	"github.com/filebrowser/filebrowser/v2/users"
 )
 
@@ -36,7 +37,7 @@ func getUserID(r *http.Request) (uint, error) {
 
 func getUser(_ http.ResponseWriter, r *http.Request) (*modifyUserRequest, error) {
 	if r.Body == nil {
-		return nil, fbErrors.ErrEmptyRequest
+		return nil, fberrors.ErrEmptyRequest
 	}
 
 	req := &modifyUserRequest{}
@@ -46,7 +47,7 @@ func getUser(_ http.ResponseWriter, r *http.Request) (*modifyUserRequest, error)
 	}
 
 	if req.What != "user" {
-		return nil, fbErrors.ErrInvalidDataType
+		return nil, fberrors.ErrInvalidDataType
 	}
 
 	return req, nil
@@ -87,7 +88,7 @@ var usersGetHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, d *
 
 var userGetHandler = withSelfOrAdmin(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	u, err := d.store.Users.Get(d.server.Root, d.raw.(uint))
-	if errors.Is(err, fbErrors.ErrNotExist) {
+	if errors.Is(err, fberrors.ErrNotExist) {
 		return http.StatusNotFound, err
 	}
 
@@ -102,7 +103,25 @@ var userGetHandler = withSelfOrAdmin(func(w http.ResponseWriter, r *http.Request
 	return renderJSON(w, r, u)
 })
 
-var userDeleteHandler = withSelfOrAdmin(func(_ http.ResponseWriter, _ *http.Request, d *data) (int, error) {
+var userDeleteHandler = withSelfOrAdmin(func(_ http.ResponseWriter, r *http.Request, d *data) (int, error) {
+	if r.Body == nil {
+		return http.StatusBadRequest, fberrors.ErrEmptyRequest
+	}
+
+	var body struct {
+		CurrentPassword string `json:"current_password"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		return http.StatusBadRequest, err
+	}
+
+	if d.settings.AuthMethod == auth.MethodJSONAuth {
+		if !users.CheckPwd(body.CurrentPassword, d.user.Password) {
+			return http.StatusBadRequest, fberrors.ErrCurrentPasswordIncorrect
+		}
+	}
+
 	err := d.store.Users.Delete(d.raw.(uint))
 	if err != nil {
 		return errToStatus(err), err
@@ -117,12 +136,18 @@ var userPostHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, d *
 		return http.StatusBadRequest, err
 	}
 
+	if d.settings.AuthMethod == auth.MethodJSONAuth {
+		if !users.CheckPwd(req.CurrentPassword, d.user.Password) {
+			return http.StatusBadRequest, fberrors.ErrCurrentPasswordIncorrect
+		}
+	}
+
 	if len(req.Which) != 0 {
 		return http.StatusBadRequest, nil
 	}
 
 	if req.Data.Password == "" {
-		return http.StatusBadRequest, fbErrors.ErrEmptyPassword
+		return http.StatusBadRequest, fberrors.ErrEmptyPassword
 	}
 
 	req.Data.Password, err = users.ValidateAndHashPwd(req.Data.Password, d.settings.MinimumPasswordLength)
@@ -151,6 +176,27 @@ var userPutHandler = withSelfOrAdmin(func(w http.ResponseWriter, r *http.Request
 	req, err := getUser(w, r)
 	if err != nil {
 		return http.StatusBadRequest, err
+	}
+
+	if d.settings.AuthMethod == auth.MethodJSONAuth {
+		var sensibleFields = map[string]struct{}{
+			"all":          {},
+			"username":     {},
+			"password":     {},
+			"scope":        {},
+			"lockPassword": {},
+			"commands":     {},
+			"perm":         {},
+		}
+
+		for _, field := range req.Which {
+			if _, ok := sensibleFields[field]; ok {
+				if !users.CheckPwd(req.CurrentPassword, d.user.Password) {
+					return http.StatusBadRequest, fberrors.ErrCurrentPasswordIncorrect
+				}
+				break
+			}
+		}
 	}
 
 	if req.Data.ID != d.raw.(uint) {

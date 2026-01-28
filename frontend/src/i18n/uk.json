@@ -42,7 +42,12 @@
     "update": "Оновити",
     "upload": "Вивантажити",
     "openFile": "Відкрити файл",
-    "discardChanges": "Скасувати"
+    "discardChanges": "Скасувати",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Завантажити файл",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Сортувати за останнім зміненням",
     "sortByName": "Сортувати за іменем",
     "sortBySize": "Сортувати за розміром",
-    "noPreview": "Попередній перегляд для цього файлу недоступний."
+    "noPreview": "Попередній перегляд для цього файлу недоступний.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "вибрати файл чи каталог",
@@ -100,7 +114,11 @@
     "submit": "Увійти",
     "username": "Ім'я користувача",
     "usernameTaken": "Ім'я користувача вже використовується",
-    "wrongCredentials": "Неправильне ім'я користувача або пароль"
+    "wrongCredentials": "Неправильне ім'я користувача або пароль",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Постійний",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Відео"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Адмін",
     "administrator": "Адміністратор",
     "allowCommands": "Запуск команд",
@@ -161,6 +180,7 @@
     "allowNew": "Створення нових файлів або каталогів",
     "allowPublish": "Публікація нових записів та сторінок",
     "allowSignup": "Дозволити користувачам реєструватися",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(залишіть поле порожнім, щоб уникнути змін)",
     "branding": "Брендинг",
     "brandingDirectoryPath": "Шлях до каталогу брендів",
@@ -173,15 +193,15 @@
     "minimumPasswordLength": "Мінімальна довжина паролю",
     "tusUploads": "Фрагментовані завантаження",
     "tusUploadsHelp": "File Browser підтримує завантаження частинами, дозволяючи створення ефективних, надійних, відновлюваних та фрагментованих завантажень навіть при ненадійному з'єднанні.",
-    "tusUploadsChunkSize": "Вказує на максимальний розмір запиту (для менших завантажень використовуватиметься пряме завантаження). Ви можете ввести цілочисельне значення у байтах або ж рядок на кшталт 10MB, 1GB тощо.",
-    "tusUploadsRetryCount": "Кількість повторних спроб які потрібно виконати, якщо фрагмент не вдалося завантажити.",
+    "tusUploadsChunkSize": "Максимальний розмір запиту (для менших завантажень використовуватиметься пряме завантаження). Ви можете ввести цілочисельне значення у байтах або ж рядок на кшталт 10MB, 1GB тощо",
+    "tusUploadsRetryCount": "Кількість повторних спроб які потрібно виконати, якщо фрагмент не вдалося завантажити",
     "userHomeBasePath": "Основний шлях для домашніх каталогів користувачів",
     "userScopeGenerationPlaceholder": "Кореневий каталог буде згенеровано автоматично",
     "createUserHomeDirectory": "Створити домашній каталог користувача",
     "customStylesheet": "Свій стиль",
     "defaultUserDescription": "Це налаштування за замовчуванням для нових користувачів.",
     "disableExternalLinks": "Вимкнути зовнішні посилання (крім документації)",
-    "disableUsedDiskPercentage": "Disable used disk percentage graph",
+    "disableUsedDiskPercentage": "Вимкнути графік використання диску",
     "documentation": "документація",
     "examples": "Приклади",
     "executeOnShell": "Виконати в командному рядку",
@@ -212,6 +232,7 @@
     "permissions": "Дозволи",
     "permissionsHelp": "Можна налаштувати користувача як адміністратора чи вибрати індивідуальні дозволи. При виборі \"Адміністратор\" всі інші параметри будуть автоматично вибрані. Керування користувачами - привілей адміністратора.\n",
     "profileSettings": "Налаштування профілю",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "запобігти доступу до будь-якого прихованого файлу (наприклад: .git, .gitignore) у кожній папці.\n",
     "ruleExample2": "блокує доступ до файлу з ім'ям Caddyfile у кореневій області.",
     "rules": "Права",
@@ -231,14 +252,15 @@
     },
     "user": "Користувач",
     "userCommands": "Команди",
-    "userCommandsHelp": "Список команд, доступних користувачу, розділений пробілами. Приклад:\n",
+    "userCommandsHelp": "Список команд, доступних користувачу, розділений пробілами. Наприклад:\n",
     "userCreated": "Користувача створено!",
     "userDefaults": "Налаштування користувача за замовчуванням",
     "userDeleted": "Користувача видалено!",
     "userManagement": "Керування користувачами",
     "userUpdated": "Користувача змінено!",
     "username": "Ім'я користувача",
-    "users": "Користувачі"
+    "users": "Користувачі",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Допомога",

@@ -42,7 +42,12 @@
     "update": "Frissítés",
     "upload": "Feltöltés",
     "openFile": "Fájl megnyitása",
-    "discardChanges": "Discard"
+    "discardChanges": "Discard",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Fájl letöltése",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Rendezés utolsó módosítás szerint",
     "sortByName": "Rendezés név szerint",
     "sortBySize": "Rendezés méret szerint",
-    "noPreview": "Ehhez a fájlhoz nincs előnézet."
+    "noPreview": "Ehhez a fájlhoz nincs előnézet.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "mappa vagy fájl kijelölése",
@@ -100,7 +114,11 @@
     "submit": "Belépés",
     "username": "Felhasználói név",
     "usernameTaken": "A felhasználói név már foglalt",
-    "wrongCredentials": "Hibás hitelesítő adatok"
+    "wrongCredentials": "Hibás hitelesítő adatok",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Állandó",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Videó"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Admin",
     "administrator": "Adminisztrátor",
     "allowCommands": "Parancsok futtatása",
@@ -161,6 +180,7 @@
     "allowNew": "Új fájlok és mappák létrehozása",
     "allowPublish": "Új bejegyzések és oldalak létrehozása",
     "allowSignup": "Felhasználók regisztrációjának engedélyezése",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(üresen hagyva nincs változás)",
     "branding": "Márkázás",
     "brandingDirectoryPath": "Márkázás mappaútvonala",
@@ -212,6 +232,7 @@
     "permissions": "Jogosultságok",
     "permissionsHelp": "A felhasználót beállíthatja rendszergazdának, vagy egyénileg is kiválaszthatja a jogosultságokat. Ha a \"Rendszergazda\" lehetőséget választja, az összes többi opció automatikusan be lesz jelölve. A felhasználók kezelése továbbra is a rendszergazda kiváltsága marad.\n",
     "profileSettings": "Profilbeállítások",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "megakadályozza a hozzáférést bármely rejtett fájlhoz (pl. .git, .gitignore) bármely mappában.\n",
     "ruleExample2": "blokkolja a hozzáférést a Caddyfile nevű fájlhoz a hatókör gyökerében.",
     "rules": "Szabályok",
@@ -238,7 +259,8 @@
     "userManagement": "Felhasználókezelés",
     "userUpdated": "Felhasználó frissítve!",
     "username": "Felhasználói név",
-    "users": "Felhasználók"
+    "users": "Felhasználók",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Súgó",

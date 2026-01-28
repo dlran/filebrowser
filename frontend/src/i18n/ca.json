@@ -42,7 +42,12 @@
     "update": "Actualitzar",
     "upload": "Pujar",
     "openFile": "Obrir fitxer",
-    "discardChanges": "Descartar"
+    "discardChanges": "Descartar",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "Descarregar fitxer",
@@ -74,7 +79,16 @@
     "sortByLastModified": "Ordenar per última modificació",
     "sortByName": "Ordenar per nom",
     "sortBySize": "Ordenar per mida",
-    "noPreview": "La vista prèvia no està disponible per a aquest fitxer."
+    "noPreview": "La vista prèvia no està disponible per a aquest fitxer.",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "seleccionar fitxer o carpeta",
@@ -100,7 +114,11 @@
     "submit": "Iniciar sessió",
     "username": "Usuari",
     "usernameTaken": "Nom d'usuari no disponible",
-    "wrongCredentials": "Usuari i/o contrasenya incorrectes"
+    "wrongCredentials": "Usuari i/o contrasenya incorrectes",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "Permanent",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "Vídeo"
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Admin",
     "administrator": "Administrador",
     "allowCommands": "Executar comandes",
@@ -161,6 +180,7 @@
     "allowNew": "Crear nous fitxers i carpetes",
     "allowPublish": "Publicar nous posts i pàgines",
     "allowSignup": "Permetre registre d'usuaris",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(deixar en blanc per evitar canvis)",
     "branding": "Marca",
     "brandingDirectoryPath": "Ruta de la carpeta de personalització de marca",
@@ -212,6 +232,7 @@
     "permissions": "Permisos",
     "permissionsHelp": "Pots nomenar l'usuari com a administrador o triar els permisos individualment. Si selecciones \"Administrador\", totes les altres opcions s'activaran automàticament. L'administració d'usuaris és un privilegi d'administrador.\n",
     "profileSettings": "Ajustos del perfil",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "prevé l'accés a una extensió de fitxer (Com .git) en cada carpeta.\n",
     "ruleExample2": "bloqueja l'accés al fitxer anomenat Caddyfile a la carpeta arrel.",
     "rules": "Regles",
@@ -238,7 +259,8 @@
     "userManagement": "Administració d'usuaris",
     "userUpdated": "Usuari actualitzat!",
     "username": "Usuari",
-    "users": "Usuaris"
+    "users": "Usuaris",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "Ajuda",

@@ -42,7 +42,12 @@
     "update": "به روز سانی",
     "upload": "آپلود",
     "openFile": "باز کردن فایل",
-    "discardChanges": "لغو کردن"
+    "discardChanges": "لغو کردن",
+    "stopSearch": "Stop searching",
+    "saveChanges": "Save changes",
+    "editAsText": "Edit as Text",
+    "increaseFontSize": "Increase font size",
+    "decreaseFontSize": "Decrease font size"
   },
   "download": {
     "downloadFile": "دانلود فایل",
@@ -74,7 +79,16 @@
     "sortByLastModified": "مرتب سازی آخرین ویرایش",
     "sortByName": "مرتب سازی نام",
     "sortBySize": "مرتب سازی اندازه",
-    "noPreview": "این فایل قابل نمایش نیست"
+    "noPreview": "این فایل قابل نمایش نیست",
+    "csvTooLarge": "CSV file is too large for preview (>5MB). Please download to view.",
+    "csvLoadFailed": "Failed to load CSV file.",
+    "showingRows": "Showing {count} row(s)",
+    "columnSeparator": "Column Separator",
+    "csvSeparators": {
+      "comma": "Comma (,)",
+      "semicolon": "Semicolon (;)",
+      "both": "Both (,) and (;)"
+    }
   },
   "help": {
     "click": "انتخاب فایل یا پوشه",
@@ -100,7 +114,11 @@
     "submit": "ورود",
     "username": "نام کاربری",
     "usernameTaken": "نام کاربری تکراری",
-    "wrongCredentials": "خطا در اعتبارسنجی"
+    "wrongCredentials": "خطا در اعتبارسنجی",
+    "passwordTooShort": "Password must be at least {min} characters",
+    "logout_reasons": {
+      "inactivity": "You have been logged out due to inactivity."
+    }
   },
   "permanent": "دائمی",
   "prompts": {
@@ -154,6 +172,7 @@
     "video": "ویدئو "
   },
   "settings": {
+    "aceEditorTheme": "Ace editor theme",
     "admin": "Admin",
     "administrator": "Administrator",
     "allowCommands": "اجرای دستورات",
@@ -161,6 +180,7 @@
     "allowNew": "ایجاد فایلها و پوشه های جدید",
     "allowPublish": "انتشار پست ها و صفحات جدید",
     "allowSignup": "اجاره دادن به کاربران برای ثبت نام",
+    "hideLoginButton": "Hide the login button from public pages",
     "avoidChanges": "(خالی بگذارید تا تغییر ایجاد نشود)",
     "branding": "برندسازی",
     "brandingDirectoryPath": "مسیر پوشه برند",
@@ -212,6 +232,7 @@
     "permissions": "دسترسی ها",
     "permissionsHelp": "شما می‌توانید کاربر را به عنوان مدیر تنظیم کنید یا دسترسی‌ها را به صورت جداگانه انتخاب کنید. اگر \"مدیر\" را انتخاب کنید، تمام گزینه‌های دیگر به طور خودکار اعمال می‌شوند. مدیریت کاربران همچنان از اختیارات مدیر است.",
     "profileSettings": "تنظیمات ناحیه کاربری",
+    "redirectAfterCopyMove": "Redirect to destination after copy/move",
     "ruleExample1": "از دسترسی به هرگونه فایل نقطه‌ای (مانند .git، .gitignore) در هر پوشه جلوگیری می‌کند.",
     "ruleExample2": "دسترسی به فایلی به نام Caddyfile را در ریشه دامنه مسدود می‌کند.",
     "rules": "قواعد",
@@ -238,7 +259,8 @@
     "userManagement": "مدیریت کاربران",
     "userUpdated": "کاربر به روز شد!",
     "username": "نام کاربری",
-    "users": "کاربران"
+    "users": "کاربران",
+    "currentPassword": "Your Current Password"
   },
   "sidebar": {
     "help": "راهنما",
