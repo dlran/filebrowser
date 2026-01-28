@@ -12,7 +12,9 @@
     "src/components/prompts/Delete.vue",
     "src/components/prompts/FileList.vue",
     "src/components/prompts/Rename.vue",
-    "src/components/prompts/Share.vue"
+    "src/components/prompts/Share.vue",
+    "src/components/prompts/CopyExif.vue",
+    "src/components/prompts/ExtractFrame.vue"
   ],
   "compilerOptions": {
     "composite": true,
