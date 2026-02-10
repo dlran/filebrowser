@@ -99,7 +99,7 @@ export default {
         const uc = res.UserComment.split('_');
         const extension = this.name.split('.').pop();
         const randStr = this.generateRandomString(4)
-        const name = `${uc[3]}_${uc[0]}_${uc[1]}_${randStr}.${extension}`;
+        const name = `${uc[3]}_${uc[0]}_${uc[1]}${uc[2].slice(0, 40)}_${randStr}.${extension}`;
         this.name = name;
       } catch (e) {
         this.$showError(e);
