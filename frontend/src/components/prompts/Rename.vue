@@ -6,7 +6,7 @@
 
     <div class="card-content">
       <p>
-        {{ $t("prompts.renameMessage") }} <code>{{ oldName() }}</code
+        {{ $t("prompts.renameMessage") }} <code>{{ oldName }}</code
         >:
       </p>
       <input
@@ -39,6 +39,7 @@
         type="submit"
         :aria-label="$t('buttons.rename')"
         :title="$t('buttons.rename')"
+        :disabled="name === '' || name === oldName"
       >
         {{ $t("buttons.rename") }}
       </button>
@@ -62,7 +63,7 @@ export default {
     };
   },
   created() {
-    this.name = this.oldName();
+    this.name = this.oldName;
   },
   inject: ["$showError"],
   computed: {
@@ -73,23 +74,34 @@ export default {
       "isListing",
     ]),
     ...mapWritableState(useFileStore, ["reload", "preselect"]),
-  },
-  methods: {
-    ...mapActions(useLayoutStore, ["closeHovers"]),
-    cancel: function () {
-      this.closeHovers();
-    },
-    oldName: function () {
+    oldName() {
       if (!this.isListing) {
         return this.req.name;
       }
 
       if (this.selectedCount === 0 || this.selectedCount > 1) {
         // This shouldn't happen.
-        return;
+        return "";
       }
 
       return this.req.items[this.selected[0]].name;
+    },
+  },
+  methods: {
+    ...mapActions(useLayoutStore, ["closeHovers"]),
+    cancel: function () {
+      this.closeHovers();
+    },
+    generateRandomString(length) {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      const charactersLength = characters.length;
+
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
+      return result;
     },
     async generateExifName() {
       try {
@@ -105,18 +117,10 @@ export default {
         this.$showError(e);
       }
     },
-    generateRandomString(length) {
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let result = '';
-      const charactersLength = characters.length;
-
-      for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-
-      return result;
-    },
     submit: async function () {
+      if (this.name === "" || this.name === this.oldName) {
+        return;
+      }
       let oldLink = "";
       let newLink = "";
 
