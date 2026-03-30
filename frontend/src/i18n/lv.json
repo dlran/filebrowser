@@ -42,12 +42,17 @@
     "update": "Atjaunināt",
     "upload": "Augšupielādēt",
     "openFile": "Atvērt failu",
+    "openDirect": "View raw",
     "discardChanges": "Izmest",
     "stopSearch": "Stop searching",
     "saveChanges": "Saglabāt izmaiņas",
     "editAsText": "Rediģēt kā tekstu",
     "increaseFontSize": "Palieliniet fonta lielumu",
-    "decreaseFontSize": "Samaziniet fonta lielumu"
+    "decreaseFontSize": "Samaziniet fonta lielumu",
+    "overrideAll": "Replace all files in destination folder",
+    "skipAll": "Skip all conflicting files",
+    "renameAll": "Rename all files (create a copy)",
+    "singleDecision": "Decide for each conflicting file"
   },
   "download": {
     "downloadFile": "Lejupielādēt failu",
@@ -88,7 +93,8 @@
       "comma": "Komats (,)",
       "semicolon": "Semikols (;)",
       "both": "Gan (,) gan (;)"
-    }
+    },
+    "fileEncoding": "File Encoding"
   },
   "help": {
     "click": "atlasiet failu vai direktoriju",
@@ -159,7 +165,19 @@
     "uploadMessage": "Atlasiet augšupielādes opciju.",
     "optionalPassword": "Izvēles parole",
     "resolution": "Izšķirtspēja",
-    "discardEditorChanges": "Vai tiešām vēlaties atmest veiktās izmaiņas?"
+    "discardEditorChanges": "Vai tiešām vēlaties atmest veiktās izmaiņas?",
+    "replaceOrSkip": "Replace or skip files",
+    "resolveConflict": "Which files do you want to keep?",
+    "singleConflictResolve": "If you select both versions, a number will be added to the name of the copied file.",
+    "fastConflictResolve": "The destination folder there are {count} files with same name.",
+    "uploadingFiles": "Uploading files",
+    "filesInOrigin": "Files in origin",
+    "filesInDest": "Files in destination",
+    "override": "Overwrite",
+    "skip": "Skip",
+    "forbiddenError": "Forbidden Error",
+    "currentPassword": "Your password",
+    "currentPasswordMessage": "Enter your password to validate this action."
   },
   "search": {
     "images": "Attēli",

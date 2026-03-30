@@ -15,19 +15,6 @@
             :isDefault="false"
             :isNew="isNew"
           />
-
-          <p v-if="isCurrentPasswordRequired">
-            <label for="currentPassword">{{
-              t("settings.currentPassword")
-            }}</label>
-            <input
-              class="input input--block"
-              type="password"
-              v-model="currentPassword"
-              id="currentPassword"
-              autocomplete="current-password"
-            />
-          </p>
         </div>
 
         <div class="card-action">
@@ -72,12 +59,12 @@ import { useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { StatusError } from "@/api/utils";
 import { authMethod } from "@/utils/constants";
+import { logout } from "@/utils/auth";
 
 const error = ref<StatusError>();
 const originalUser = ref<IUser>();
 const user = ref<IUser>();
 const createUserDir = ref<boolean>(false);
-const currentPassword = ref<string>("");
 const isCurrentPasswordRequired = ref<boolean>(false);
 
 const $showError = inject<IToastError>("$showError")!;
@@ -134,17 +121,35 @@ const fetchData = async () => {
   }
 };
 
-const deletePrompt = () =>
-  layoutStore.showHover({ prompt: "deleteUser", confirm: deleteUser });
+const deletePrompt = () => {
+  if (isCurrentPasswordRequired.value) {
+    layoutStore.showHover({
+      prompt: "current-password",
+      confirm: (event: Event, currentPassword: string) => {
+        event.preventDefault();
+        layoutStore.closeHovers();
+        deleteUser(currentPassword);
+      },
+    });
+  } else {
+    layoutStore.showHover({
+      prompt: "deleteUser",
+      confirm: () => deleteUser(""),
+    });
+  }
+};
 
-const deleteUser = async (e: Event) => {
-  e.preventDefault();
+const deleteUser = async (currentPassword: string) => {
   if (!user.value) {
     return false;
   }
   try {
-    await api.remove(user.value.id, currentPassword.value);
-    router.push({ path: "/settings/users" });
+    await api.remove(user.value.id, currentPassword);
+    if (user.value.id == authStore.user?.id) {
+      logout();
+    } else {
+      router.push({ path: "/settings/users" });
+    }
     $showSuccess(t("settings.userDeleted"));
   } catch (err) {
     if (err instanceof StatusError) {
@@ -157,8 +162,25 @@ const deleteUser = async (e: Event) => {
   return true;
 };
 
-const save = async (event: Event) => {
+const save = (event: Event) => {
   event.preventDefault();
+  if (isCurrentPasswordRequired.value) {
+    layoutStore.showHover({
+      prompt: "current-password",
+      confirm: (event: Event, currentPassword: string) => {
+        event.preventDefault();
+        layoutStore.closeHovers();
+        send(currentPassword);
+      },
+    });
+  } else {
+    send("");
+  }
+
+  return true;
+};
+
+const send = async (currentPassword: string) => {
   if (!user.value) {
     return false;
   }
@@ -170,11 +192,11 @@ const save = async (event: Event) => {
         ...user.value,
       };
 
-      const loc = await api.create(newUser, currentPassword.value);
+      const loc = await api.create(newUser, currentPassword);
       router.push({ path: loc || "/settings/users" });
       $showSuccess(t("settings.userCreated"));
     } else {
-      await api.update(user.value, ["all"], currentPassword.value);
+      await api.update(user.value, ["all"], currentPassword);
 
       if (user.value.id === authStore.user?.id) {
         authStore.updateUser(user.value);
@@ -185,7 +207,5 @@ const save = async (event: Event) => {
   } catch (e: any) {
     $showError(e);
   }
-
-  return true;
 };
 </script>
