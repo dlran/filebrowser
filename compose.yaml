@@ -1,12 +1,7 @@
-# Run using:
-#   docker compose up --build
-
 services:
   filebrowser:
     container_name: filebrowser
-    build:
-      dockerfile: Dockerfile
-      context: .
+    image: filebrowser/filebrowser:latest
     networks:
       - filebrowser
     ports:
@@ -14,7 +9,7 @@ services:
     volumes:
       - filebrowser:/flux/vault
     environment:
-      - REDIS_CACHE_URL=redis://default:filebrowser@redis:6379 # Use rediss:// for ssl
+      - FB_REDIS_CACHE_URL=redis://default:filebrowser@redis:6379 # Use rediss:// for ssl
 
   redis:
     container_name: redis
