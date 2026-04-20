@@ -69,6 +69,7 @@ header .menu-button {
   height: 100%;
   width: 100%;
   max-width: 25em;
+  flex: 1 1 auto;
 }
 
 #search.active {

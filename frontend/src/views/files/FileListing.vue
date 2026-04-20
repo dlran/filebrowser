@@ -4,10 +4,10 @@
       <search />
       <title />
       <action
-        class="search-button"
-        icon="search"
-        :label="t('buttons.search')"
-        @action="openSearch()"
+        class=""
+        icon="refresh"
+        label="Refresh"
+        @action="manualRefresh()"
       />
 
       <template #actions>
@@ -47,6 +47,12 @@
           />
         </template>
 
+        <action
+          class="search-button"
+          icon="search"
+          :label="t('buttons.search')"
+          @action="openSearch()"
+        />
         <action
           v-if="headerButtons.extractFrame"
           icon="filter_frames"
@@ -1120,6 +1126,10 @@ const handleEmptyAreaClick = (e: MouseEvent) => {
   if (target.dataset.clearOnClick === "true") {
     fileStore.selected = [];
   }
+};
+
+const manualRefresh = () => {
+  fileStore.reload = true;
 };
 </script>
 <style scoped>
