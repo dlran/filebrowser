@@ -18,6 +18,7 @@
     </main>
     <prompts></prompts>
     <upload-files></upload-files>
+    <task-list></task-list>
   </div>
 </template>
 
@@ -30,6 +31,7 @@ import Sidebar from "@/components/Sidebar.vue";
 import Prompts from "@/components/prompts/Prompts.vue";
 import Shell from "@/components/Shell.vue";
 import UploadFiles from "@/components/prompts/UploadFiles.vue";
+import TaskList from "@/components/TaskList.vue";
 import { enableExec } from "@/utils/constants";
 import { computed, watch } from "vue";
 import { useRoute } from "vue-router";

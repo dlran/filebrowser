@@ -37,6 +37,14 @@
           <span>{{ $t("sidebar.newFile") }}</span>
         </button>
       </div>
+      <button
+        @click="toggle"
+        class="action"
+        title="task"
+      >
+        <i class="material-icons">fact_check</i>
+        <span>Tasks</span>
+      </button>
 
       <div v-if="user.perm.admin">
         <button
@@ -119,6 +127,7 @@ import { reactive } from "vue";
 import { mapActions, mapState } from "pinia";
 import { useAuthStore } from "@/stores/auth";
 import { useFileStore } from "@/stores/file";
+import { useTaskStore } from "@/stores/task";
 import { useLayoutStore } from "@/stores/layout";
 
 import * as auth from "@/utils/auth";
@@ -164,6 +173,7 @@ export default {
   },
   methods: {
     ...mapActions(useLayoutStore, ["closeHovers", "showHover"]),
+    ...mapActions(useTaskStore, ["toggle"]),
     abortOngoingFetchUsage() {
       this.usageAbortController.abort();
     },
