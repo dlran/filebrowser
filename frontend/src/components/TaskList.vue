@@ -26,7 +26,7 @@
 
       <div class="card-content">
         <template v-if="data.length">
-          <div class="file" v-for="item in data" :key="item">
+          <div class="file" v-for="item in data" :key="item.id">
             <div class="task-item">
               <div class="task-item-bd" :title="item.id">
                 <span>{{ item.type }} {{ item.result }}</span>
@@ -89,7 +89,7 @@ const taskStore = useTaskStore();
 
 const { visible } = storeToRefs(taskStore);
 const open = ref<boolean>(true);
-const data = ref<string[]>([]);
+const data = ref<Record<string, any>[]>([]);
 
 watch(visible, (newValue) => {
   newValue && getTaskList();
@@ -103,15 +103,15 @@ const getTaskList = async () => {
   try {
     const res = await api.taskList();
     data.value = res.tasks;
-  } catch (e) {
+  } catch (e: any) {
     $showError(e);
   }
 };
-const deleteTask = async (id) => {
+const deleteTask = async (id: string) => {
   try {
     await api.taskDelete(id);
     getTaskList();
-  } catch (e) {
+  } catch (e: any) {
     $showError(e);
   }
 };

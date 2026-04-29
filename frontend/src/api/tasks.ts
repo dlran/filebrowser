@@ -8,7 +8,7 @@ export function taskDelete(taskID: string) {
 export function taskList() {
   const url = "/api/tasks/";
   const method = "GET";
-  return fetchJSON(url, { method });
+  return fetchJSON<Record<string, any>>(url, { method });
 }
 
 export function taskCall(data: { [key: string]: string }) {
