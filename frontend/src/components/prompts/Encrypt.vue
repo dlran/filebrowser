@@ -94,8 +94,7 @@ export default {
           src: selectedItem,
           password: this.password,
           mode: this.mode,
-          taskName: "encrypt_task",
-          // taskName: "test_task",
+          taskName: "file:encrypt",
         });
         // this.reload = true;
         this.closeHovers();
