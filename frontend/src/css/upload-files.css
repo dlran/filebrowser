@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   transform: none;
+  z-index: 4;
 }
 
 .upload-files .file {
