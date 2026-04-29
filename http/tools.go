@@ -12,7 +12,11 @@ var toolsPatchHandler = withUser(func(w http.ResponseWriter, r *http.Request, d 
 	src := r.URL.Path
 	action := r.URL.Query().Get("action")
 	dst := r.URL.Query().Get("destination")
-	dst, err := url.QueryUnescape(dst)
+	var err error
+	dst, err = url.QueryUnescape(dst)
+	if err != nil {
+		return errToStatus(err), err
+	}
 	fps := r.URL.Query().Get("fps")
 	src = d.user.FullPath(src)
 	switch action {

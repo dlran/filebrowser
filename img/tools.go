@@ -118,7 +118,7 @@ func ExtractFrame(srcPath, fps string) error {
 	newDirPath := filepath.Join(dir, fileName)
 
 	if err := os.MkdirAll(newDirPath, 0755); err != nil {
-		return fmt.Errorf("Mkdir failed: %v", err)
+		return fmt.Errorf("mkdir failed: %v", err)
 	}
 
 	outputFilePath := filepath.Join(newDirPath, fmt.Sprintf("%s_%%04d.jpg", fileName))

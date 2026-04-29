@@ -30,6 +30,7 @@ import (
 	"github.com/filebrowser/filebrowser/v2/settings"
 	"github.com/filebrowser/filebrowser/v2/storage"
 	"github.com/filebrowser/filebrowser/v2/users"
+	"github.com/filebrowser/filebrowser/v2/worker"
 )
 
 var (
@@ -256,6 +257,23 @@ user created with the credentials from options "username" and "password".`,
 			log.Println("Stopped serving new connections.")
 		}()
 
+		var wker *worker.Worker
+		if redisCacheURL != "" {
+			if err := fbhttp.NewAsynqInspector(redisCacheURL); err != nil {
+				log.Fatalf("Asynq inspector error: %s\n", err)
+			}
+			go func() {
+				wker, err = worker.NewWorker(redisCacheURL)
+				if err != nil {
+					log.Fatalf("Asynq worker error: %s\n", err)
+				}
+
+				if err := wker.Start(); err != nil {
+					log.Fatalf("Asynq worker start error: %s\n", err)
+				}
+			}()
+		}
+
 		sigc := make(chan os.Signal, 1)
 		signal.Notify(sigc,
 			os.Interrupt,
@@ -273,6 +291,12 @@ user created with the credentials from options "username" and "password".`,
 		if err := srv.Shutdown(shutdownCtx); err != nil {
 			log.Fatalf("HTTP shutdown error: %v", err)
 		}
+
+		if redisCacheURL != "" {
+			wker.Shutdown()
+			log.Println("Asynq worker stopped")
+		}
+
 		log.Println("Graceful shutdown complete.")
 
 		return nil

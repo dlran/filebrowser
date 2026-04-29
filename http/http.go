@@ -90,6 +90,9 @@ func NewHandler(
 	public.PathPrefix("/share").Handler(monkey(publicShareHandler, "/api/public/share/")).Methods("GET")
 
 	api.PathPrefix("/tools").Handler(monkey(toolsPatchHandler, "/api/tools")).Methods("POST")
+	api.PathPrefix("/tasks").Handler(monkey(taskListHandler, "/api/tasks")).Methods("GET")
+	api.PathPrefix("/tasks").Handler(monkey(taskCallHandler, "/api/tasks")).Methods("POST")
+	api.PathPrefix("/tasks").Handler(monkey(taskDeleteHandler, "/api/tasks")).Methods("DELETE")
 
 	return stripPrefix(server.BaseURL, r), nil
 }
