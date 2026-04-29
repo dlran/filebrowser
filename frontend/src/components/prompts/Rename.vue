@@ -93,12 +93,15 @@ export default {
       this.closeHovers();
     },
     generateRandomString(length) {
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let result = '';
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let result = "";
       const charactersLength = characters.length;
 
       for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
       }
 
       return result;
@@ -108,9 +111,9 @@ export default {
         const res = await tools.extractExif({
           from: this.req.items[this.selected[0]].url,
         });
-        const uc = res.UserComment.split('_');
-        const extension = this.name.split('.').pop();
-        const randStr = this.generateRandomString(4)
+        const uc = res.UserComment.split("_");
+        const extension = this.name.split(".").pop();
+        const randStr = this.generateRandomString(4);
         const name = `${uc[3]}_${uc[0]}_${uc[1]}${uc[2].slice(0, 40)}_${randStr}.${extension}`;
         this.name = name;
       } catch (e) {

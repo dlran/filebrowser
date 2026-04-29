@@ -37,11 +37,7 @@
           <span>{{ $t("sidebar.newFile") }}</span>
         </button>
       </div>
-      <button
-        @click="toggle"
-        class="action"
-        title="task"
-      >
+      <button @click="toggle" class="action" title="task">
         <i class="material-icons">fact_check</i>
         <span>Tasks</span>
       </button>

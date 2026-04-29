@@ -40,7 +40,6 @@
 <script>
 import { mapActions, mapState, mapWritableState } from "pinia";
 import { tools as api } from "@/api";
-import buttons from "@/utils/buttons";
 import { useFileStore } from "@/stores/file";
 import { useLayoutStore } from "@/stores/layout";
 

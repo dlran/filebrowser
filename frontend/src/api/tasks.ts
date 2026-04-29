@@ -1,4 +1,4 @@
-import { fetchURL, fetchJSON, removePrefix } from "./utils";
+import { fetchURL, fetchJSON } from "./utils";
 
 export function taskDelete(taskID: string) {
   const url = `?id=${taskID}`;
@@ -6,13 +6,13 @@ export function taskDelete(taskID: string) {
 }
 
 export function taskList() {
-  const url = '/api/tasks/';
-  const method = 'GET'
+  const url = "/api/tasks/";
+  const method = "GET";
   return fetchJSON(url, { method });
 }
 
-export function taskCall(data: {[key: string]: string}) {
-  const { taskName, ...body } = data
+export function taskCall(data: { [key: string]: string }) {
+  const { taskName, ...body } = data;
   const url = `?taskName=${taskName}`;
   return tasksFetch(url, "POST", body);
 }

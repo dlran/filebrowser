@@ -5,17 +5,9 @@
     </div>
 
     <div class="card-content">
-      <p>
-        Password
-      </p>
-      <input
-        class="input input--block"
-        type="text"
-        v-model.trim="password"
-      />
-      <p>
-        Confirm Password
-      </p>
+      <p>Password</p>
+      <input class="input input--block" type="text" v-model.trim="password" />
+      <p>Confirm Password</p>
       <input
         class="input input--block"
         type="text"
@@ -25,7 +17,7 @@
       <p>
         <label>
           <input type="checkbox" name="mode" v-model="mode" />
-          {{ mode ? 'encrypt' : 'decrypt' }}
+          {{ mode ? "encrypt" : "decrypt" }}
         </label>
       </p>
     </div>
@@ -83,18 +75,18 @@ export default {
       try {
         const selectedItem = [];
         for (const index of this.selected) {
-          const item = this.req.items[index]
+          const item = this.req.items[index];
           if (!item.isDir) {
             selectedItem.push(item.path);
           }
         }
 
         if (!selectedItem.length) {
-          this.$showError('no file selected', false);
+          this.$showError("no file selected", false);
           return;
         }
         if (this.password !== this.confirmPwd) {
-          this.$showError('Two inputs are inequality', false);
+          this.$showError("Two inputs are inequality", false);
           return;
         }
 
