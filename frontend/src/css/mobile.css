@@ -12,7 +12,7 @@
 
 @media (max-width: 736px) {
   body {
-    padding-bottom: 6em;
+    padding-bottom: 5em;
   }
   #listing.list .item .size {
     display: none;
@@ -68,7 +68,7 @@
   }
   #file-selection {
     position: fixed;
-    bottom: 4em;
+    bottom: 1em;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

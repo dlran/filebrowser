@@ -103,7 +103,7 @@
       v-if="isMobile"
       id="file-selection"
       :class="{
-        'file-selection-margin-bottom': fileStore.multiple,
+        'file-selection-margin-bottom': fileStore.multiple || taskStore.visible,
       }"
     >
       <span v-if="fileStore.selectedCount > 0">
@@ -362,6 +362,7 @@ import { useAuthStore } from "@/stores/auth";
 import { useClipboardStore } from "@/stores/clipboard";
 import { useFileStore } from "@/stores/file";
 import { useLayoutStore } from "@/stores/layout";
+import { useTaskStore } from "@/stores/task";
 
 import { users, files as api } from "@/api";
 import { enableExec } from "@/utils/constants";
@@ -403,6 +404,7 @@ const clipboardStore = useClipboardStore();
 const authStore = useAuthStore();
 const fileStore = useFileStore();
 const layoutStore = useLayoutStore();
+const taskStore = useTaskStore();
 
 const { req } = storeToRefs(fileStore);
 
