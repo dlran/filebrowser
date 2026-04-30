@@ -494,7 +494,7 @@ const close = () => {
   router.push({ path: uri });
 };
 
-const download = () => window.open(downloadUrl.value);
+const download = () => api.anchorDownloadFile(downloadUrl.value);
 const openDirect = () => window.open(directUrl.value);
 
 const editAsText = () => {

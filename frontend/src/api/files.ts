@@ -73,7 +73,7 @@ export async function put(url: string, content = "") {
   return resourceAction(url, "PUT", content);
 }
 
-export function download(format: any, ...files: string[]) {
+export function download(format: any, openTab: boolean, ...files: string[]) {
   let url = `${baseURL}/api/raw`;
 
   if (files.length === 1) {
@@ -94,7 +94,11 @@ export function download(format: any, ...files: string[]) {
     url += `algo=${format}&`;
   }
 
-  window.open(url);
+  if (openTab) {
+    window.open(url);
+  } else {
+    anchorDownloadFile(url);
+  }
 }
 
 export async function post(
@@ -241,4 +245,18 @@ export async function usage(url: string, signal: AbortSignal) {
     }
     throw e;
   }
+}
+
+export function anchorDownloadFile(url: string, fileName: string = "") {
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = fileName || "";
+  link.style.display = "none";
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  document.body.removeChild(link);
 }

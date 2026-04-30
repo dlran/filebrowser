@@ -1000,7 +1000,11 @@ const download = () => {
     fileStore.selectedCount === 1 &&
     !fileStore.req.items[fileStore.selected[0]].isDir
   ) {
-    api.download(null, fileStore.req.items[fileStore.selected[0]].url);
+    api.download(
+      null,
+      !isMobile.value,
+      fileStore.req.items[fileStore.selected[0]].url
+    );
     return;
   }
 
@@ -1019,7 +1023,7 @@ const download = () => {
         files.push(route.path);
       }
 
-      api.download(format, ...files);
+      api.download(format, !isMobile.value, ...files);
     },
   });
 };
