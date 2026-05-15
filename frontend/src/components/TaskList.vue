@@ -49,7 +49,7 @@
               >
               <button
                 class="action"
-                @click="deleteTask(item.id)"
+                @click="deleteTask(item.id, item.state)"
                 aria-label="Delete"
                 title="Delete"
               >
@@ -108,9 +108,9 @@ const getTaskList = async () => {
     $showError(e);
   }
 };
-const deleteTask = async (id: string) => {
+const deleteTask = async (id: string, state: string) => {
   try {
-    await api.taskDelete(id);
+    await api.taskDelete(id, state);
     getTaskList();
   } catch (e: any) {
     $showError(e);

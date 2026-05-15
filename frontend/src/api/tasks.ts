@@ -1,7 +1,7 @@
 import { fetchURL, fetchJSON } from "./utils";
 
-export function taskDelete(taskID: string) {
-  const url = `?id=${taskID}`;
+export function taskDelete(taskID: string, state: string) {
+  const url = `?id=${taskID}&state=${state}`;
   return tasksFetch(url, "DELETE");
 }
 
