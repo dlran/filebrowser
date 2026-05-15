@@ -4,6 +4,7 @@
       <div class="card-title">
         <h2>Task list</h2>
         <action icon="lock" label="" show="encrypt"> </action>
+        <action icon="directions_run" label="" show="execScript"> </action>
         <button
           class="action"
           @click="getTaskList"

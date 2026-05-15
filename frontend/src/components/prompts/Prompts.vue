@@ -30,6 +30,7 @@ import DiscardEditorChanges from "./DiscardEditorChanges.vue";
 import CopyExif from "./CopyExif.vue";
 import ExtractFrame from "./ExtractFrame.vue";
 import Encrypt from "./Encrypt.vue";
+import ExecScript from "./ExecScript.vue";
 import ResolveConflict from "./ResolveConflict.vue";
 import CurrentPassword from "./CurrentPassword.vue";
 
@@ -56,6 +57,7 @@ const components = new Map<string, any>([
   ["copyExif", CopyExif],
   ["extractFrame", ExtractFrame],
   ["encrypt", Encrypt],
+  ["execScript", ExecScript],
   ["resolve-conflict", ResolveConflict],
   ["current-password", CurrentPassword],
 ]);
