@@ -145,8 +145,17 @@ const routes = [
   },
   {
     path: "/:catchAll(.*)*",
-    redirect: (to: RouteLocation) =>
-      `/files/${[...to.params.catchAll].join("/")}`,
+    redirect: (to: RouteLocation) => {
+      const catchAll = to.params.catchAll;
+
+      const paths = Array.isArray(catchAll)
+        ? catchAll
+        : catchAll
+          ? [catchAll]
+          : [];
+
+      return `/files/${paths.join("/")}`;
+    },
   },
 ];
 
