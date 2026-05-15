@@ -9,18 +9,22 @@ import (
 	"time"
 )
 
-type encryptParams struct {
-	Src      []string `json:"src"`
-	Password string   `json:"password"`
-	Root     string   `json:"root"`
-	Mode     bool     `json:"mode"`
+type BaseParams struct {
+	Src  []string `json:"src"`
+	Root string   `json:"root"`
+}
+
+type ExtendParams struct {
+	BaseParams
+	Password string `json:"password"`
+	Mode     bool   `json:"mode"`
 }
 
 var taskCallHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	asynqHandler := getAsynqHandler()
 
 	taskName := r.URL.Query().Get("taskName")
-	payload := &encryptParams{}
+	payload := &ExtendParams{}
 	err := json.NewDecoder(r.Body).Decode(payload)
 	if err != nil {
 		return http.StatusBadRequest, err
@@ -55,13 +59,19 @@ var taskListHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *d
 var taskDeleteHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	queue := "default"
 	taskID := r.URL.Query().Get("id")
+	state := r.URL.Query().Get("state")
 	if taskID == "" {
 		err := fmt.Errorf("Invalid request parameters")
 		return errToStatus(err), err
 	}
 
 	asynqHandler := getAsynqHandler()
-	err := asynqHandler.inspector.DeleteTask(queue, taskID)
+    var err error
+    if state == "active" {
+	    err = asynqHandler.inspector.CancelProcessing(taskID)
+    } else {
+	    err = asynqHandler.inspector.DeleteTask(queue, taskID)
+    }
 	if err != nil {
 		return errToStatus(err), err
 	}

@@ -53,4 +53,5 @@ func (w *Worker) Shutdown() {
 func (w *Worker) registerHandlers() {
 	w.mux.HandleFunc("internal:init_queue", initHandler)
 	w.mux.HandleFunc("file:encrypt", encryptFileHandler)
+	w.mux.HandleFunc("file:exec_scripts", executeScriptTaskHandler)
 }
